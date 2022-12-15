@@ -140,7 +140,7 @@ class AttGAN():
         )
         self.G.train()
         if self.gpu: self.G.cuda()
-        summary(self.G, [(3, args.img_size, args.img_size), (args.n_attrs, 1, 1)], batch_size=4, device='cuda' if args.gpu else 'cpu')
+        # summary(self.G, [(3, args.img_size, args.img_size), (args.n_attrs, 1, 1)], batch_size=4, device='cuda' if args.gpu else 'cpu')
         
         self.D = Discriminators(
             args.dis_dim, args.dis_norm, args.dis_acti,
@@ -148,7 +148,7 @@ class AttGAN():
         )
         self.D.train()
         if self.gpu: self.D.cuda()
-        summary(self.D, [(3, args.img_size, args.img_size)], batch_size=4, device='cuda' if args.gpu else 'cpu')
+        # summary(self.D, [(3, args.img_size, args.img_size)], batch_size=4, device='cuda' if args.gpu else 'cpu')
         
         if self.multi_gpu:
             self.G = nn.DataParallel(self.G)
